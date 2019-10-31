@@ -32,23 +32,6 @@ public class Darksoul {
 		this.type = type;
 		SoulBearer = soulBearer;
 	}
-
-	public Darksoul(int vitality, int endurance, int strength, int dexterity, int intelligence, int level) {
-		super();
-		this.vitality = vitality;
-		this.endurance = endurance;
-		this.strength = strength;
-		this.dexterity = dexterity;
-		this.intelligence = intelligence;
-		this.level = level;
-	}
-
-	public Darksoul(String name, User soulBearer) {
-		super();
-		this.name = name;
-		SoulBearer = soulBearer;
-	}
-
 	
 	public int getId() {
 		return id;

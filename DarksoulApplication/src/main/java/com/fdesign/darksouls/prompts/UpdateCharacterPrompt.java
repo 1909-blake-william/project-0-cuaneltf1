@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.fdesign.darksouls.daos.DarksoulDao;
 import com.fdesign.darksouls.models.Darksoul;
+import com.fdesign.darksouls.models.User;
 import com.fdesign.darksouls.util.AuthUtil;
 
 public class UpdateCharacterPrompt implements Prompt {
@@ -15,36 +16,37 @@ public class UpdateCharacterPrompt implements Prompt {
 	@Override
 	public Prompt run() {
 		System.out.println("Enter character to imbue with darkness: ");
-		String name = scan.nextLine();
+		String h = scan.nextLine();
 		
 		System.out.println("Enter new vitality count");
-		int vitality = scan.nextInt();
+		int a = scan.nextInt();
 		scan.nextLine();
 		
 		System.out.println("Enter new endurance count");
-		int endurance = scan.nextInt();
+		int b = scan.nextInt();
 		scan.nextLine();
 		
 		System.out.println("Enter new strength count");
-		int strength = scan.nextInt();
+		int cc = scan.nextInt();
 		scan.nextLine();
 		
 		System.out.println("Enter new dexterity count");
-		int dexterity = scan.nextInt();
+		int d = scan.nextInt();
 		scan.nextLine();
 		
 		System.out.println("Enter new intelligence count");
-		int intelligence = scan.nextInt();
+		int ee = scan.nextInt();
 		scan.nextLine();
 		
 		System.out.println("Enter new level count");
-		int level = scan.nextInt();
+		int g = scan.nextInt();
 		scan.nextLine();
 		
-		Darksoul r = new Darksoul(name, authUtil.getCurrentUser());
-		System.out.println(r);
-		Darksoul up = new Darksoul(vitality, endurance, strength, dexterity, intelligence, level);
-		System.out.println(up);
+		User x = authUtil.getCurrentUser();
+		int i = x.getId();
+		
+		darksoulDao.updateForm(a, b, cc, d, ee, g, h, i);
+
 		return new MainMenuPrompt();
 	}
 

@@ -36,11 +36,6 @@ public class LoginPrompt implements Prompt {
 			System.out.println("Enter new username: ");
 			String username = scan.nextLine();
 			scan.nextLine();
-//			User u = userDao.findByUsername(username);
-//			if(u!= null) {
-//				System.out.println("Invalid username");
-//				break;
-//			}
 			System.out.println("Enter new password");
 			String password = scan.nextLine();
 			

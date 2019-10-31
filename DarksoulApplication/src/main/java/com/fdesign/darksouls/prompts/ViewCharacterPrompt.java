@@ -15,7 +15,7 @@ public class ViewCharacterPrompt implements Prompt {
 
 	@Override
 	public Prompt run() {
-		//How do I call upon the user model to acces the get id constructor to use to filter out characters we see
+		//How do I call upon the user model to access the get id constructor to use to filter out characters we see
 		List<Darksoul> allDarksoul = darkDao.findAll();
 		for(Darksoul d: allDarksoul) {
 			System.out.println(d);

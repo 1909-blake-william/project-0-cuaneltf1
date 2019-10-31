@@ -29,10 +29,10 @@ public class MainMenuPrompt implements Prompt {
 				//can create new character
 			case "3":
 				return new DeleteCharacterPrompt();
-				//pulls up the wrong constructor, FIX*
+				//can delete by name and id
 			case "4":
 				return new UpdateCharacterPrompt();
-				//still getting the main constructor although the SQL command is sound, FIX*
+				//update works but now need to add a archives
 			case "5":
 //				return new ViewArchievesPrompt();
 			case "6":

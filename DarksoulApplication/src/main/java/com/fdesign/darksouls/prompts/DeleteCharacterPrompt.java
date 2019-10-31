@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.fdesign.darksouls.daos.DarksoulDao;
 import com.fdesign.darksouls.models.Darksoul;
+import com.fdesign.darksouls.models.User;
 import com.fdesign.darksouls.util.AuthUtil;
 
 public class DeleteCharacterPrompt implements Prompt {
@@ -16,12 +17,13 @@ public class DeleteCharacterPrompt implements Prompt {
 	public Prompt run() {
 
 		System.out.println("Enter character name: ");
-		String name = scan.nextLine();
+		String r = scan.nextLine();
 		
-		Darksoul r = new Darksoul(name, authUtil.getCurrentUser());
-		//getting the wrong constructor
-		System.out.println(r);
-		darksoulDao.release(r);
+		User x = authUtil.getCurrentUser();
+		int f = x.getId();
+		System.out.println(f);
+		
+		darksoulDao.releaseForm(r, f);
 		return new MainMenuPrompt();
 	}
 

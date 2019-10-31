@@ -64,7 +64,7 @@ public class DarksoulDaoSQL implements DarksoulDao {
 			String sql = "SELECT * FROM darksoul";
 
 			PreparedStatement ps = c.prepareStatement(sql);
-
+			
 			ResultSet rs = ps.executeQuery();
 			List<Darksoul> darksoul = new ArrayList<>();
 			while (rs.next()) {
@@ -155,14 +155,15 @@ public class DarksoulDaoSQL implements DarksoulDao {
 	}
 
 	@Override
-	public void release(Darksoul r) {
+	public void releaseForm(String r, int f) {
 		try (Connection c = com.fdesign.darksouls.util.ConnectionUtil.getConnection()) {
 //			c.setAutoCommit(false);
-			String sql = "DELETE FROM darksoul WHERE darksoul_name = '?' AND SoulBearer = ? ";
+			String sql = "DELETE FROM darksoul WHERE darksoul_name = ? AND soulbearer = ? ";
 
 			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setString(1, r.getName());
-			ps.setInt(2, r.getSoulBearer().getId());
+			ps.setString(1, r);
+			ps.setInt(2, f);
+			System.out.println(f);
 			ps.executeUpdate();
 			return;
 			
@@ -174,27 +175,41 @@ public class DarksoulDaoSQL implements DarksoulDao {
 	}
 
 	@Override
-	public int update(Darksoul up, Darksoul r) {
+	public void release(Darksoul r) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateForm(int a, int b, int cc, int d, int ee, int g, String h, int i) {
 		try (Connection c = com.fdesign.darksouls.util.ConnectionUtil.getConnection()) {
-			String sql = "Update darksoul set vitality = ?, endurance = ?, strength = ?, dexterity = ?, intelligence = ?, darksoul_level = ? WHERE darksoul_name = '?' AND soulbearer = ?";
+			String sql = "Update darksoul set vitality = ?, endurance = ?, strength = ?, dexterity = ?, intelligence = ?, darksoul_level = ? WHERE darksoul_name = ? AND soulbearer = ?";
 
 			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setInt(1, up.getVitality());
-			ps.setInt(2, up.getEndurance());
-			ps.setInt(3, up.getStrength());
-			ps.setInt(4, up.getDexterity());
-			ps.setInt(5, up.getIntelligence());
-			ps.setInt(6, up.getLevel());
-			ps.setString(7, r.getName());
-			ps.setInt(8, r.getSoulBearer().getId());
-
-			return ps.executeUpdate();
-			
+			ps.setInt(1, a);
+			ps.setInt(2, b);
+			ps.setInt(3, cc);
+			ps.setInt(4, d);
+			ps.setInt(5, ee);
+			ps.setInt(6, g);
+			ps.setString(7, h);
+			ps.setInt(8, i);
+			ps.executeUpdate();
+			return;
+					
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return 0;
+			return;
 		}
 	}
+
+	@Override
+	public int update(Darksoul up, Darksoul r) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 }
